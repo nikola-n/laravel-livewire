@@ -1,61 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Livewire essentials
+-- composer require livewire/livewire
+-- livewire:make componentName
+@livewireStyles in head
+@livewireScripts in body
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
+# Passing data into the blade
+views/livewire/componentName - rendered view
+Http/Livewire/ComponentName - pass the data
+include the view @livewire('componentName')
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Data binding
+-- when you add public property it's automatically passed to the view
+-- wire:model - keep the value of th input element and  sync it with the value passed from the public property (backend)
+-- As you do some action it's sending ajax requests
+-- debounce.1--ms - wire:model attribute that defines when to send the ajax 
+request 
+-- lazy - wire:model attribute that sends the request after you click away.
+-- it doesn't have wire-if wire-loop like vue, it uses laravel blade directives
+- for multiple select make the property array and implode it.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Actions
+-- fire methods on livewire component 
+-- wire:click="methodName('acceptParam')" it can accept parameters
+-- define the method in the Component
+-- magic $event variable that is accepted in the method
+-- $event.target.innerText
+-- wire:submit.prevent="methodName('param'), you must prevent the form from submitting
+if you want to display other action!
+-- you can pass the data directly without creating a method in the Component
+$set('property', 'Bing'); 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Livecycle Hook
+-- mount method is the __construct of livewire. Then the component is loaded
+the first will be called the mount method
+-- we can pass data in the mount method, and pass the parameters in the blade component like
+we do in the @include 
+-- we can dependency inject in the mount method and pass Request, then in the url assign the ?name="
+-- You should not pass Request anywhere else.
+-- hydrate method will run after the mount method (it runs after mount method). Every action you will
+make it will trigger this livecycle method.
+-- updated method it runs after the property is updated!
+-- updating 
+-- scope all methods to run on a specific property, to do that
+you add the property on the method name updatedFoo (studlyCase)
 
-## Learning Laravel
+# Nesting
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-- you can nest components in a component, use foreach loop, you should add key() if the data is changed
+not to be lost.
+-- you can store eloquent models and collections as public property
+-- wire:click="$refresh" magic method, refreshes Carbon now()
+-- Child component aren't rendered from the parent on subsequent requests
+-- When we hit refresh it refreshes just the parent component, and each child refreshes separately
+-- you can pass the modal attribute(name) in the method 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Events
+-- Events are livewire API to enable communication between child components and parent
+components. 
+-- we use $this->emit('nameOfMethod') then a request is sent to the server then it comes back to emit the event, then
+it listens to the event in the property $listeners in the child component and fires an event
+-- you can also pass parameters in the emit.
+-- we can use magic $emit method on the view to skip extra call to the server 
+-- but this way it will refresh only the children
+-- you can call it from the dev tools Livewire, window.livewire livewire.emit('bla')
+-- emitUp fires the event in the one of the children components and the parent

@@ -20,6 +20,9 @@ Route::get('/', function () {
     return view('examples');
 });
 
+Route::get('/screencasts', function () {
+   return view('screencasts');
+});
 //Route::post('/contact', function (Request $request){
 //    $contact = $request->validate([
 //        'name' => 'required',
