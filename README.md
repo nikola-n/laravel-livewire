@@ -1,4 +1,4 @@
-# Livewire essentials
+# Livewire essentials -- Getting started tutorials
 -- composer require livewire/livewire
 -- livewire:make componentName
 @livewireStyles in head
@@ -65,3 +65,7 @@ it listens to the event in the property $listeners in the child component and fi
 -- but this way it will refresh only the children
 -- you can call it from the dev tools Livewire, window.livewire livewire.emit('bla')
 -- emitUp fires the event in the one of the children components and the parent
+
+---------------------------------------------------------------------------------------------------
+
+# A Basic form with validation

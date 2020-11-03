@@ -16,7 +16,9 @@ class ContactForm extends Component
     //the submit button.
 
     //On the form: wire:submit..prevent="submitForm"
+    //load spinner only when its called that method
     //wire:loading, wire:target="submitForm"
+    //set property on a fly
     //wire:click="$set('successMessage', null)"
     public $name;
 

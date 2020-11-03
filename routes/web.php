@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('examples');
+    return view('examples',
+    ['users' => App\Models\User::paginate(10)]);
 });
 
 Route::get('/screencasts', function () {
