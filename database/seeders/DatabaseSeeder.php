@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Comment;
+use App\Models\Contact;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -48,5 +49,10 @@ class DatabaseSeeder extends Seeder
             'username' => 'Diane S',
             'content'  => 'Another comment for the post with an id of 4',
         ]);
+
+        Contact::create(['name' => 'Nikola', 'phone' => '+38970264995']);
+        Contact::create(['name' => 'Nikola', 'phone' => '+38970264995']);
+        Contact::create(['name' => 'Nikola', 'phone' => '+38970264995']);
+        Contact::create(['name' => 'Nikola', 'phone' => '+38970264995']);
     }
 }

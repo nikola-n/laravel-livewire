@@ -19330,7 +19330,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/postcss-loader/src/index.js):\nError: Failed to find '~tailwindcss/base.css'\n  in [\n    /Users/nikola/code/laravel-livewire/resources/css\n  ]\n    at /Users/nikola/code/laravel-livewire/node_modules/postcss-import/lib/resolve-id.js:35:13\n    at /Users/nikola/code/laravel-livewire/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/nikola/code/laravel-livewire/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/nikola/code/laravel-livewire/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/nikola/code/laravel-livewire/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at /Users/nikola/code/laravel-livewire/node_modules/postcss-loader/src/index.js:208:9");
 
 /***/ }),
 

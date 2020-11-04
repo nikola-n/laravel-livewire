@@ -114,4 +114,16 @@
             @endforeach
         </ul>
     </div>
+
+    <hr>
+
+    <div class="my-8">
+        <h2 class="text-lg font-semibold mt-4">Livewire Add and remove buttons in form </h2>
+
+        <livewire:add-and-remove-buttons />
+    </div>
+
+    <hr>
+
+
 @endsection
