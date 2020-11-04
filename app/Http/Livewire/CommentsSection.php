@@ -9,7 +9,7 @@ use Livewire\Component;
 class CommentsSection extends Component
 {
 
-    public Post $post;
+    public $post;
 
     public $comment;
 
@@ -17,7 +17,13 @@ class CommentsSection extends Component
 
     protected $rules = [
         'comment' => 'required|min:4',
+        'post'    => 'required',
     ];
+
+    public function mount(Post $post)
+    {
+        $this->post = $post;
+    }
 
     public function postComment()
     {
