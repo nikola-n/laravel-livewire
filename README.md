@@ -69,3 +69,25 @@ it listens to the event in the property $listeners in the child component and fi
 ---------------------------------------------------------------------------------------------------
 
 # A Basic form with validation
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------
+# File Uploads
+
+-- When we choose file, the file is already stored in a directory (storage/app/livewire-tmp/{file}).
+-- Then on submit it will copy it in storage/app/public/photos;
+-- This allows real time validation.
+-- Trait WithFileUploads;
+-- Right after the selected file, to view the file we add img tag to render the image. There we can use
+temporaryUrl() livewire method which also have security features( only user that uploads the file can see it)
+
+ 
