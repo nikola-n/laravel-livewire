@@ -90,4 +90,6 @@ it listens to the event in the property $listeners in the child component and fi
 -- Right after the selected file, to view the file we add img tag to render the image. There we can use
 temporaryUrl() livewire method which also have security features( only user that uploads the file can see it)
 
+# Events
+-- it can be fired in both ways form frontend to backend and from backend to frontend
  

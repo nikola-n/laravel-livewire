@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -54,5 +55,8 @@ class DatabaseSeeder extends Seeder
         Contact::create(['name' => 'Nikola', 'phone' => '+38970264995']);
         Contact::create(['name' => 'Nikola', 'phone' => '+38970264995']);
         Contact::create(['name' => 'Nikola', 'phone' => '+38970264995']);
+
+        Tag::create(['name' => 'one']);
+        Tag::create(['name' => 'two']);
     }
 }

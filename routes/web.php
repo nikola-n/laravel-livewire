@@ -81,7 +81,7 @@ Route::patch('/post/{post}', function (Request $request, Post $post) {
 
     $post->update([
         'title' => $request->title,
-        'content' => $request->content,
+        'content' => \request('content'),
         'photo' => $request->photo ? $request->file('photo')->store('photos', 'public') : $post->photo,
     ]);
 
